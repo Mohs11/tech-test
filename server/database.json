@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": 2,
+      "label": "Go see No Time To Die",
+      "description": "Cinema",
+      "category": "Mandatory Socialization",
+      "done": "Not Yet"
+    },
+    {
+      "id": 3,
+      "label": "Buy new climbing shoes",
+      "description": "It's time to lay the old ones to rest ",
+      "category": "Expensive stuff",
+      "done": "Sun Oct 10 2021"
+    },
+    {
+      "id": 4,
+      "label": "Take out the bins",
+      "description": "Recycling, Landfill and Food",
+      "category": "House Stuff",
+      "done": "Not Yet"
+    }
+  ]
+}

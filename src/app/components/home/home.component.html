@@ -1,0 +1,48 @@
+<small *ngIf="loading">Loading...</small>
+<div class="cointainer search-container">
+    <div class="col-lg-12 mb-4">
+        <input *ngIf="!loading" [(ngModel)]="searchText" class="search"
+        placeholder="Search by name, category, description or done status">
+    </div>
+    <small *ngIf="!loading && noTasks">Sorry, no tasks found, why don't you add one?</small>
+    <div class="row mt-4" *ngIf="!loading">
+        <div *ngFor="let task of tasks | searchFilter:searchText" class="col-lg-6 mb-4 card-container">
+            <div class="card custom-card">
+                <div class="card-header custom-card-header">
+                    <ul class="card-controls">
+                        <li>
+                            <h4 class="task-title">{{task.label | titlecase}}</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <p class="task-additional"><strong>Category:</strong><em>{{task.category | titlecase}}</em></p>
+                    <div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <p>
+                                    <strong>Description:</strong>
+                                    {{task.description}}
+                                </p>
+                                <p>
+                                    <strong>Done:</strong> {{task.done}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <footer>
+                        <div class="custom-card-footer">
+                            <ul class="card-controls">
+                                <li class="control-buttons">
+                                    <button [disabled]="task.done !== 'Not Yet'" (click)="confirmComplete(task)" class="btn btn-success btn-sm">Completed</button>
+                                    <button (click)="editTask(task.id)" class="btn btn-primary btn-sm">Edit</button>
+                                    <button (click)="confirmDelete(task.id, task.label)" class="btn btn-danger btn-sm">Delete</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

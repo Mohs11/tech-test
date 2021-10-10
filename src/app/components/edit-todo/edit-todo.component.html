@@ -1,0 +1,89 @@
+<small *ngIf="loading">Loading...</small>
+<div class="12 mt-4" *ngIf="!loading">
+    <div class="card custom-card">
+        <div class="card-header">
+            Add New Task
+        </div>
+        <div class="card-body">
+            <form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
+
+                <!-- Label -->
+                <div class="form-group">
+                    <label for="label">Label</label>
+                    <input type="text" class="form-control"
+                        [ngClass]="{'is-invalid': taskLabel.errors && taskLabel.touched}" name="label"
+                        #taskLabel="ngModel" [(ngModel)]="task.label" value="task.label" minlength="2" maxlength="50"
+                        required>
+
+                    <small>The label or name of the task</small>
+
+                    <div [hidden]="!taskLabel.errors?.required" class="invalid-feedback">
+                        Label required
+                    </div>
+                    <div [hidden]="!taskLabel.errors?.minlength" class="invalid-feedback">
+                        Label must be at least 2 characters
+                    </div>
+                    <div [hidden]="!taskLabel.errors?.maxlength" class="invalid-feedback">
+                        Label can only be less than 50 characters
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control"
+                        [ngClass]="{'is-invalid': taskCategory.errors && taskCategory.touched}" name="Category"
+                        #taskCategory="ngModel" [(ngModel)]="task.category" minlength="2" maxlength="50" required>
+                    <small>The task category</small>
+
+                    <div [hidden]="!taskCategory.errors?.required" class="invalid-feedback">
+                        Category required
+                    </div>
+                    <div [hidden]="!taskCategory.errors?.minlength" class="invalid-feedback">
+                        Category must be at least 2 characters
+                    </div>
+                    <div [hidden]="!taskCategory.errors?.maxlength" class="invalid-feedback">
+                        Category can only be less than 50 characters
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control"
+                        [ngClass]="{'is-invalid': taskDescription.errors && taskDescription.touched}" name="Description"
+                        #taskDescription="ngModel" [(ngModel)]="task.description" minlength="2" maxlength="50" required>
+                    <small>The task description</small>
+
+                    <div [hidden]="!taskDescription.errors?.required" class="invalid-feedback">
+                        Description required
+                    </div>
+                    <div [hidden]="!taskDescription.errors?.minlength" class="invalid-feedback">
+                        Description must be at least 2 characters
+                    </div>
+                    <div [hidden]="!taskDescription.errors?.maxlength" class="invalid-feedback">
+                        Description can only be less than 50 characters
+                    </div>
+                </div>
+
+                <!-- Done -->
+                <div class="form-group done-checkbox">
+                    <ul>
+                        <li>
+                            <label for="done">Done</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" (change)="updateDone()" [checked]="checked">
+                        </li>
+                        <li>
+                            <small>If unchecked: Done status will be set to 'Not Yet', because we beleive in you.
+                                To complete the task, use the <button [disabled]="true" class="btn btn-sm btn-success">Completed</button> on the home page.
+                            </small>
+                        </li>
+                    </ul>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary btn-block submit">
+            </form>
+        </div>
+    </div>
+</div>

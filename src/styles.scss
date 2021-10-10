@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+$baseBlack: black;
+$background: rgb(27, 27, 27);
+$darkBackground: rgb(34, 34, 34);
+$secondBackground: rgb(51, 51, 51);
+$border: rgb(255, 255, 255);
+$lightbackground: rgb(212, 212, 212);
+$textColor: rgb(255, 255, 255);
+
+
+html, body {
+    color: $textColor;
+    background-color: $background;
+}
